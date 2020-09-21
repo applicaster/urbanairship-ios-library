@@ -19,7 +19,7 @@
 /**
  * The style to apply to the list.
  */
-@property (nonatomic, strong) UAMessageCenterStyle *style;
+@property (nonatomic, strong) UAMessageCenterStyle *mcstyle;
 
 /**
  * An optional predicate for filtering messages.

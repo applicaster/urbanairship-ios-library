@@ -30,7 +30,7 @@ extern NSString *const UAMessageDataScheme;
 /**
  * The style to apply to the default message center.
  */
-@property (nonatomic, strong) UAMessageCenterStyle *style;
+@property (nonatomic, strong) UAMessageCenterStyle *mcstyle;
 
 /**
  * An optional predicate for filtering messages.

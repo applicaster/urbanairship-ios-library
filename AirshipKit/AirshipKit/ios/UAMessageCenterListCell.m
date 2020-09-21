@@ -13,10 +13,10 @@
     self.unreadIndicator.hidden = !message.unread;
 }
 
-- (void)setStyle:(UAMessageCenterStyle *)style {
-    _style = style;
+- (void)setMcstyle:(UAMessageCenterStyle *)mcstyle {
+    _mcstyle = mcstyle;
 
-    BOOL hidden = !style.iconsEnabled;
+    BOOL hidden = !mcstyle.iconsEnabled;
     self.listIconView.hidden = hidden;
 
     // if the icon view is hidden, set a zero width constraint to allow related views to fill its space
@@ -31,54 +31,54 @@
         [self.listIconView addConstraints:zeroWidthConstraints];
     }
 
-    self.listIconView.hidden = !style.iconsEnabled;
+    self.listIconView.hidden = !mcstyle.iconsEnabled;
 
-    if (style.cellColor) {
-        self.backgroundColor = style.cellColor;
+    if (mcstyle.cellColor) {
+        self.backgroundColor = mcstyle.cellColor;
     }
 
-    if (style.cellHighlightedColor) {
+    if (mcstyle.cellHighlightedColor) {
         UIView *bgColorView = [[UIView alloc] init];
-        bgColorView.backgroundColor = style.cellHighlightedColor;
+        bgColorView.backgroundColor = mcstyle.cellHighlightedColor;
         self.selectedBackgroundView = bgColorView;
     }
 
-    if (style.cellTitleFont) {
-        self.title.font = style.cellTitleFont;
+    if (mcstyle.cellTitleFont) {
+        self.title.font = mcstyle.cellTitleFont;
     }
 
-    if (style.cellTitleColor) {
-        self.title.textColor = style.cellTitleColor;
+    if (mcstyle.cellTitleColor) {
+        self.title.textColor = mcstyle.cellTitleColor;
     }
 
-    if (style.cellTitleHighlightedColor) {
-        self.title.highlightedTextColor = style.cellTitleHighlightedColor;
+    if (mcstyle.cellTitleHighlightedColor) {
+        self.title.highlightedTextColor = mcstyle.cellTitleHighlightedColor;
     }
 
-    if (style.cellDateFont) {
-        self.date.font = style.cellDateFont;
+    if (mcstyle.cellDateFont) {
+        self.date.font = mcstyle.cellDateFont;
     }
     
-    if (style.cellDateColor) {
-        self.date.textColor = style.cellDateColor;
+    if (mcstyle.cellDateColor) {
+        self.date.textColor = mcstyle.cellDateColor;
     }
 
-    if (style.cellDateHighlightedColor) {
-        self.date.highlightedTextColor = style.cellDateHighlightedColor;
+    if (mcstyle.cellDateHighlightedColor) {
+        self.date.highlightedTextColor = mcstyle.cellDateHighlightedColor;
     }
 
-    if (style.cellTintColor) {
-        self.tintColor = style.cellTintColor;
+    if (mcstyle.cellTintColor) {
+        self.tintColor = mcstyle.cellTintColor;
     }
 
     // Set unread indicator background color if explicitly provided, otherwise try to apply
     // tints lowest-level first, up the view hierarchy
-    if (style.unreadIndicatorColor) {
-        self.unreadIndicator.backgroundColor = style.unreadIndicatorColor;
-    } else if (style.cellTintColor) {
-        self.unreadIndicator.backgroundColor = self.style.cellTintColor;
-    } else if (style.tintColor) {
-        self.unreadIndicator.backgroundColor = self.style.tintColor;
+    if (mcstyle.unreadIndicatorColor) {
+        self.unreadIndicator.backgroundColor = mcstyle.unreadIndicatorColor;
+    } else if (mcstyle.cellTintColor) {
+        self.unreadIndicator.backgroundColor = self.mcstyle.cellTintColor;
+    } else if (mcstyle.tintColor) {
+        self.unreadIndicator.backgroundColor = self.mcstyle.tintColor;
     }
     
     // needed for retina displays because the unreadIndicator is configured to rasterize in

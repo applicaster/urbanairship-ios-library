@@ -30,7 +30,7 @@ NSString *const UAMessageDataScheme = @"message";
 
 + (instancetype)messageCenterWithConfig:(UARuntimeConfig *)config {
     UAMessageCenter *center = [[UAMessageCenter alloc] init];
-    center.style = [UAMessageCenterStyle styleWithContentsOfFile:config.messageCenterStyleConfig];
+    center.mcstyle = [UAMessageCenterStyle styleWithContentsOfFile:config.messageCenterStyleConfig];
     return center;
 }
 
@@ -54,7 +54,7 @@ NSString *const UAMessageDataScheme = @"message";
                                                                                                  action:@selector(dismiss)];
         }
 
-        self.splitViewController.style = self.style;
+        self.splitViewController.mcstyle = self.mcstyle;
         self.splitViewController.title = self.title;
 
         self.splitViewController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;

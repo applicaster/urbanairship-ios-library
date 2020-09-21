@@ -219,32 +219,32 @@
     _filter = filter;
 }
 
-- (void)setStyle:(UAMessageCenterStyle *)style {
-    _style = style;
+- (void)setMcstyle:(UAMessageCenterStyle *)mcstyle {
+    _mcstyle = mcstyle;
     
     [self applyStyle];
 }
 
 - (void)applyStyle {
-    if (self.style.editButtonTitleColor) {
-        self.editItem.tintColor = self.style.editButtonTitleColor;
+    if (self.mcstyle.editButtonTitleColor) {
+        self.editItem.tintColor = self.mcstyle.editButtonTitleColor;
     }
     
-    if (self.style.cancelButtonTitleColor) {
-        self.cancelItem.tintColor = self.style.cancelButtonTitleColor;
+    if (self.mcstyle.cancelButtonTitleColor) {
+        self.cancelItem.tintColor = self.mcstyle.cancelButtonTitleColor;
     }
     
-    if (self.style.listColor) {
-        self.messageTable.backgroundColor = self.style.listColor;
-        self.refreshControl.backgroundColor = self.style.listColor;
+    if (self.mcstyle.listColor) {
+        self.messageTable.backgroundColor = self.mcstyle.listColor;
+        self.refreshControl.backgroundColor = self.mcstyle.listColor;
     }
     
-    if (self.style.cellSeparatorColor) {
-        self.messageTable.separatorColor = self.style.cellSeparatorColor;
+    if (self.mcstyle.cellSeparatorColor) {
+        self.messageTable.separatorColor = self.mcstyle.cellSeparatorColor;
     }
     
-    if (self.style.refreshTintColor) {
-        self.refreshControl.tintColor = self.style.refreshTintColor;
+    if (self.mcstyle.refreshTintColor) {
+        self.refreshControl.tintColor = self.mcstyle.refreshTintColor;
     }
     
     [self applyToolbarItemStyles];
@@ -257,34 +257,34 @@
 
 - (void)applyToolbarItemStyles {
     // Override any inherited tint color, to avoid potential clashes
-    self.selectAllButtonItem.tintColor = (self.style.selectAllButtonTitleColor) ? self.style.selectAllButtonTitleColor : self.defaultTintColor;
-    self.deleteItem.tintColor = (self.style.deleteButtonTitleColor) ? self.style.deleteButtonTitleColor : [UIColor redColor];
-    self.markAsReadButtonItem.tintColor = (self.style.markAsReadButtonTitleColor) ? self.style.markAsReadButtonTitleColor : self.defaultTintColor;
+    self.selectAllButtonItem.tintColor = (self.mcstyle.selectAllButtonTitleColor) ? self.mcstyle.selectAllButtonTitleColor : self.defaultTintColor;
+    self.deleteItem.tintColor = (self.mcstyle.deleteButtonTitleColor) ? self.mcstyle.deleteButtonTitleColor : [UIColor redColor];
+    self.markAsReadButtonItem.tintColor = (self.mcstyle.markAsReadButtonTitleColor) ? self.mcstyle.markAsReadButtonTitleColor : self.defaultTintColor;
 }
 
 - (void)applyMessageViewNavBarStyles {
     // apply styles to the message view's navigation bar
-    if (self.style.navigationBarColor) {
-        self.messageViewNavigationController.navigationBar.barTintColor = self.style.navigationBarColor;
+    if (self.mcstyle.navigationBarColor) {
+        self.messageViewNavigationController.navigationBar.barTintColor = self.mcstyle.navigationBarColor;
     }
     
-    if (self.style.tintColor) {
-        self.messageViewNavigationController.navigationBar.tintColor = self.style.tintColor;
+    if (self.mcstyle.tintColor) {
+        self.messageViewNavigationController.navigationBar.tintColor = self.mcstyle.tintColor;
     }
     
     // Only apply opaque property if a style is set
-    if (self.style) {
-        self.messageViewNavigationController.navigationBar.translucent = !self.style.navigationBarOpaque;
+    if (self.mcstyle) {
+        self.messageViewNavigationController.navigationBar.translucent = !self.mcstyle.navigationBarOpaque;
     }
     
     NSMutableDictionary *titleAttributes = [NSMutableDictionary dictionary];
     
-    if (self.style.titleColor) {
-        titleAttributes[NSForegroundColorAttributeName] = self.style.titleColor;
+    if (self.mcstyle.titleColor) {
+        titleAttributes[NSForegroundColorAttributeName] = self.mcstyle.titleColor;
     }
     
-    if (self.style.titleFont) {
-        titleAttributes[NSFontAttributeName] = self.style.titleFont;
+    if (self.mcstyle.titleFont) {
+        titleAttributes[NSFontAttributeName] = self.mcstyle.titleFont;
     }
 
     if (titleAttributes.count) {
@@ -826,8 +826,8 @@
 }
 
 - (UIImage *)placeholderIcon {
-    if (self.style.placeholderIcon) {
-        return self.style.placeholderIcon;
+    if (self.mcstyle.placeholderIcon) {
+        return self.mcstyle.placeholderIcon;
     }
 
     if (! _placeholderIcon) {
@@ -850,7 +850,7 @@
         cell = [[bundle loadNibNamed:nibName owner:nil options:nil] firstObject];
     }
 
-    cell.style = self.style;
+    cell.mcstyle = self.mcstyle;
     UAInboxMessage *message = [self messageAtIndex:indexPath.row];
     [cell setData:message];
 
